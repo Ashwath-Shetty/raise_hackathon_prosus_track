@@ -12,7 +12,7 @@ A lightweight, agent-powered food ordering prototype built for the RAISE Hackath
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Setup Instructions.
 
 1. **Clone the repository**
 
