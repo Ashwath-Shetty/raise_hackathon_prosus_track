@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "raise-hackathon-prosus-track"
+version = "0.1.0"
+description = ""
+authors = ["Ashwath Shetty <64685993+Ashwath-Shetty@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "raise_hackathon_prosus_track"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
