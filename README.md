@@ -304,7 +304,10 @@ git push space main
 ![Knowledge graph](assets/image.webp)
 
 ---
-## Architecture Diagram
+
+## 🤖 Food Ordering Agent – Orchestration Diagram
+
+```txt
                             ┌────────────────────┐
                             │    User Input      │
                             └────────┬───────────┘
@@ -334,7 +337,7 @@ git push space main
         ▼             ▼              ▼              ▼
 ┌────────────┐ ┌────────────────┐ ┌─────────────┐ ┌────────────────┐
 │Location    │ │Restaurant      │ │MenuTool     │ │Cart Extraction │
-│Normalizer  │ │SearchTool      │ │(LLM Menu)   │ │Prompt (LLM)    │
+│Normalizer  │ │SearchTool      │ │             │ │Prompt (LLM)    │
 └────────────┘ └────────────────┘ └─────────────┘ └────────────────┘
         │             │              │              │
         └─────────────┴────┬─────────┴──────────────┘
@@ -362,7 +365,20 @@ git push space main
                      ┌──────────────┐
                      │ Chat Memory  │ ◄─── stores dialogue context (last 10 turns)
                      └──────────────┘
+```
 
+---
+
+## 🧠 Component Roles
+
+| Component              | Description                                                                                  |
+| ---------------------- | -------------------------------------------------------------------------------------------- |
+| **FoodOrderingAgent**  | Central orchestrator; handles user input, tracks state, and invokes tools/LLMs               |
+| **Conversation State** | State machine that moves through: greeting → location → preference → menu → cart → confirm   |
+| **ChatGroq LLM**       | Powers prompt-driven capabilities like menu generation, cart parsing, location normalization |
+| **Tools**              | Plug-and-play helpers: `LocationNormalizerTool`, `RestaurantSearchTool`, `MenuTool`          |
+| **KnowledgeGraph**     | Persists order history and user preferences                                                  |
+| **Memory**             | Keeps recent chat history for LLM context (via `ConversationBufferWindowMemory`)             |
 
 
 ---
