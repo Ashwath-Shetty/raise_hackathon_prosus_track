@@ -371,7 +371,7 @@ git push space main
       [ Thank user → Reset state ]
 
 
-````
+```
 
 ---
 
