@@ -13,7 +13,7 @@ load_dotenv()
 
 # Get keys from environment
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-SERP_API_KEY = os.getenv("SERPAPI_KEY")
+SERP_API_KEY = os.getenv("SERP_API_KEY")
 
 # http_client = httpx.Client()  # or AsyncClient() if async
 
