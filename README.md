@@ -308,7 +308,6 @@ git push space main
 ## 📊 Architecture
 ---
 
-````markdown
 ### 🧭 Conversation Flow Diagram
 ```txt
 [ Start: User sends a message ]
