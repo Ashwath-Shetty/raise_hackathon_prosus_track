@@ -305,8 +305,6 @@ git push space main
 
 ---
 
-
-````markdown
 ## 📊 Architecture
 
 ### 🧭 Conversation Flow Diagram
