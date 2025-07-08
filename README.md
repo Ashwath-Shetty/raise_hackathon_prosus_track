@@ -23,7 +23,7 @@ This project is designed using **LangChain agents**, orchestrated to provide mod
 * 🎨 **Gradio UI** for fast prototyping and deployment
 * ⚡ **Groq API** + **LLaMA 3** for fast, low-latency inference
 
----
+
 
 ---
 

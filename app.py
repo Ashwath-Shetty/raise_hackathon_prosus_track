@@ -46,16 +46,30 @@ def create_chatbot_interface():
 
         # Instructions
         gr.Markdown("""
-        ### How to use:
-        1. **Start** by saying hi  
-        2. **Share** your location - I live in Koramangala Bengaluru  
-        3. **Tell me** what type of food you want - pizza 
-        4. **Choose** from recommended restaurants - Pizza hut  
-        5. **Add items** to your cart (e.g., "Add 2 Margherita Pizza") / you also have the option to delete item / show cart  
-        6. **Say 'checkout'** when ready to place order  
-        7. **Confirm** your order  
-        8. **Click 'Show Knowledge Graph' (at the end when your order is succesfull" ** to visualize your preferences and orders  
+        ### 📘 How to Use
+        
+        👉 [**Click here for a sample conversation**](https://github.com/Ashwath-Shetty/raise_hackathon_prosus_track?tab=readme-ov-file#-sample-conversation)
+        
+        Follow these steps to interact with the food ordering bot:
+        
+        1. 👋 **Start** by saying “hi”
+        2. 📍 **Share your location**  
+           e.g., “I live in Koramangala, Bengaluru” or “I'm near Bengaluru Airport”
+        3. 🍕 **Tell me what food you want**  
+           e.g., “Pizza” or “Chinese”
+        4. 🏬 **Choose a restaurant** from the recommended list  
+           e.g., “Pizza Hut”
+        5. 🛒 **Add items to your cart**  
+           e.g., “Add 2 Margherita Pizzas, 4 tiramisu”  
+           – You can also:  
+           • Remove items → “Delete 1 tiramisu”  
+           • View your cart → “Show cart”
+        6. ✅ **Say 'checkout'** to place your order
+        7. 🤖 **Confirm your order** when prompted (yes/no)
+        8. 🧠 **Click 'Show Knowledge Graph'** (once order is successful) to visualize your preferences and order history
+        9. 💻 [**View the GitHub Repo**](https://github.com/Ashwath-Shetty/raise_hackathon_prosus_track) for full source code
         """)
+
     
     return demo
 
@@ -70,6 +84,6 @@ if __name__ == "__main__":
     demo = create_chatbot_interface()
     demo.launch(
         server_name="0.0.0.0",
-        server_port=7861,
+        
         share=True  # Set to False for local only
     )
