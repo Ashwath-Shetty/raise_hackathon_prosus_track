@@ -368,76 +368,6 @@ git push space main
                |
                ▼
       [ Thank user → Reset state ]
-````
-
----
-
-
-
-### 🧭 Conversation Flow Diagram
-
-```txt
-
-[ Start: User sends a message ]
-               |
-               v
-     ┌────────────────────────────┐
-     | Check Current Conversation |
-     |         State              |
-     └────────────┬──────────────┘
-                  |
-        ┌─────────┴──────────┐
-        ▼                    ▼
- [ Greeting / New User ]     [ Existing State ]
-        |                            |
-        ▼                            ▼
-[ Greet user → Ask for location ]   [ Continue based on state ]
-        |
-        ▼
-[ Normalize Location using Tool ]
-        |
-        ▼
-[ Ask for food preference/cuisine ]
-        |
-        ▼
-[ Use RestaurantSearchTool to show 3 options ]
-        |
-        ▼
-[ User selects restaurant by name or number ]
-        |
-        ▼
-[ Use MenuTool to generate menu via LLM ]
-        |
-        ▼
-[ Show menu → User adds items (LLM parses it) ]
-        |
-        ▼
-[ Update cart → Show cart summary ]
-        |
-        ▼
-   ┌────────────────────────────┐
-   | Check if user says:        |
-   | "show cart", "checkout"    |
-   └────────────┬──────────────┘
-                |
-           ┌────┴────┐
-           ▼         ▼
-   [ Show cart ]   [ Continue ]
-                     |
-                     ▼
-             [ Confirm order? ]
-                     |
-               ┌─────┴──────┐
-               ▼            ▼
-            [ Yes ]       [ No ]
-               |            |
-               ▼            ▼
- [ Place order → Save to KG ]  [ Reset state or return to menu ]
-               |
-               ▼
-      [ Thank user → Reset state ]
-
-
 ```
 
 ---
@@ -510,10 +440,10 @@ git push space main
 
 | Tool Name                  | Purpose                                                               | Input Format                                | Output Format                                           |
 | -------------------------- | --------------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------- |
-| **LocationNormalizerTool** | Normalize user’s text input location (e.g., "near Jyothi Nivas")      | `user_message: str`                         | `{ "location": "Koramangala, Bengaluru", "ll": "..." }` |
+| **LocationNormalizerTool(LLM)** | Normalize user’s text input location (e.g., "near Jyothi Nivas")  uses LLM to understand the location and get the coordinates    | `user_message: str`                         | `{ "location": "Koramangala, Bengaluru", "ll": "..." }` |
 | **RestaurantSearchTool**   | Fetch top 3 restaurants using SerpAPI (Google Maps)                   | `location: str`, `food_type: str`           | Formatted string or JSON of top restaurants             |
-| **MenuTool**               | LLM-generated realistic menu for selected restaurant                  | `restaurant_name: str`, `cuisine_type: str` | `formatted_menu: str`, `structured_items: JSON`         |
-| **Cart Extraction (LLM)**  | Extract items and quantities from natural text (user says “2 pizzas”) | Prompt includes `menu` + `user message`     | `[{"item": "Pizza", "quantity": 2}]`                    |
+| **MenuTool**               |  menu for selected restaurant                  | `restaurant_name: str`, `cuisine_type: str` | `formatted_menu: str`, `structured_items: JSON`         |
+| **Cart Extraction (LLM)**  | Extract items and quantities from natural text (user says “2 pizzas”), helpful cart update, menu lookup etc. | Prompt includes `menu` + `user message`     | `[{"item": "Pizza", "quantity": 2}]`                    |
 | **Knowledge Graph**        | Store and query user’s preferences and order history                  | Accessed via user\_id                       | JSON-like structure with past orders & locations        |
 
 ---
