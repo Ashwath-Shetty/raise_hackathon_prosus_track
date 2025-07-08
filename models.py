@@ -33,34 +33,6 @@ class UserProfile:
     location: str = ""
 
 
-# # Knowledge Graph (Simple JSON storage)
-# class KnowledgeGraph:
-#     def __init__(self):
-#         self.users = {}
-#         self.restaurants = {}
-#         self.orders = {}
-    
-#     def add_user(self, user_profile: UserProfile):
-#         self.users[user_profile.user_id] = asdict(user_profile)
-    
-#     def get_user(self, user_id: str) -> Optional[UserProfile]:
-#         if user_id in self.users:
-#             data = self.users[user_id]
-#             return UserProfile(**data)
-#         return None
-    
-#     def update_user_preferences(self, user_id: str, cuisine: str, restaurant: str):
-#         if user_id not in self.users:
-#             self.users[user_id] = asdict(UserProfile(user_id, [], [], []))
-        
-#         user_data = self.users[user_id]
-#         if cuisine not in user_data['preferred_cuisines']:
-#             user_data['preferred_cuisines'].append(cuisine)
-#         if restaurant not in user_data['favorite_restaurants']:
-#             user_data['favorite_restaurants'].append(restaurant)
-
-
-
 class KnowledgeGraph:
     def __init__(self):
         self.users = {}
