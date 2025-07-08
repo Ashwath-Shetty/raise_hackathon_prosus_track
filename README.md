@@ -306,6 +306,74 @@ git push space main
 ---
 
 ## 📊 Architecture
+---
+
+````markdown
+### 🧭 Conversation Flow Diagram
+```txt
+[ Start: User sends a message ]
+               |
+               v
+     ┌────────────────────────────┐
+     | Check Current Conversation |
+     |         State              |
+     └────────────┬──────────────┘
+                  |
+        ┌─────────┴──────────┐
+        ▼                    ▼
+ [ Greeting / New User ]     [ Existing State ]
+        |                            |
+        ▼                            ▼
+[ Greet user → Ask for location ]   [ Continue based on state ]
+        |
+        ▼
+[ Normalize Location using Tool ]
+        |
+        ▼
+[ Ask for food preference/cuisine ]
+        |
+        ▼
+[ Use RestaurantSearchTool to show 3 options ]
+        |
+        ▼
+[ User selects restaurant by name or number ]
+        |
+        ▼
+[ Use MenuTool to generate menu via LLM ]
+        |
+        ▼
+[ Show menu → User adds items (LLM parses it) ]
+        |
+        ▼
+[ Update cart → Show cart summary ]
+        |
+        ▼
+   ┌────────────────────────────┐
+   | Check if user says:        |
+   | "show cart", "checkout"    |
+   └────────────┬──────────────┘
+                |
+           ┌────┴────┐
+           ▼         ▼
+   [ Show cart ]   [ Continue ]
+                     |
+                     ▼
+             [ Confirm order? ]
+                     |
+               ┌─────┴──────┐
+               ▼            ▼
+            [ Yes ]       [ No ]
+               |            |
+               ▼            ▼
+ [ Place order → Save to KG ]  [ Reset state or return to menu ]
+               |
+               ▼
+      [ Thank user → Reset state ]
+````
+
+---
+
+
 
 ### 🧭 Conversation Flow Diagram
 
