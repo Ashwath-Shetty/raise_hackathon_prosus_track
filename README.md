@@ -363,3 +363,6 @@ Here are some exciting directions and improvements planned for the project:
   * Balancing memory vs. personalization without leaking information across users in shared deployments.
 
 ---
+## checkout our team
+
+* [raise hackathon team](https://lablab.ai/event/raise-your-hack/just-do-it-prosus-track)
